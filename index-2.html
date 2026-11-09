@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>वेदपुराणसार ग्लोबल कनेक्ट</title>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&family=Noto+Serif+Devanagari:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--saf:#E8751A;--mar:#7A1F3D;--gold:#E0B04B;--bg:#FFF6E6;--card:#FFFFFF;--tx:#2B2320;--mu:#7A6E66;--ln:#EBD9B8;--on:#fff;--ok:#1F8A4C;--bad:#C92A2A;--teal:#0C8599;--pk:#D6336C;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17120F;--card:#241D19;--tx:#F5EBDC;--mu:#B3A599;--ln:#3C322B;--saf:#F29A4B}}
+:root[data-theme="dark"]{--bg:#17120F;--card:#241D19;--tx:#F5EBDC;--mu:#B3A599;--ln:#3C322B;--saf:#F29A4B}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg) radial-gradient(circle at 1px 1px,rgba(200,117,37,.12) 1px,transparent 0) 0 0/22px 22px;color:var(--tx);font:400 16px/1.6 Mukta,"Noto Sans Devanagari",system-ui,sans-serif;padding-bottom:96px}
+h1,h2,h3,.serif{font-family:"Noto Serif Devanagari",Georgia,serif;margin:0}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:linear-gradient(100deg,#7A1F3D,#C2255C 55%,#E8751A);border-bottom:3px solid var(--gold);display:flex;align-items:center;gap:10px;padding:10px 14px;color:#FFF6E6}
+.logo{width:42px;height:42px;border-radius:50%;background:conic-gradient(#E0B04B,#E8751A,#D6336C,#0C8599,#E0B04B);display:grid;place-items:center;flex:none;box-shadow:0 0 0 2px #FFF6E6}
+.logo span{background:#7A1F3D;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:800 19px "Noto Serif Devanagari",serif}
+.wm b{display:block;font:800 18px/1.15 "Noto Serif Devanagari",serif}.wm small{font-size:11px;letter-spacing:.12em;opacity:.9}
+.logo,.wm{user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}.sp{flex:1}
+.ib{border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.18);color:#fff;min-width:40px;height:40px;border-radius:12px;font-size:17px;cursor:pointer}
+main{max-width:880px;margin:0 auto;padding:14px}
+.view{display:none}.view.on{display:block}
+.card{background:var(--card);border:1px solid var(--ln);border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:0 2px 0 var(--ln)}
+.btn{border:0;border-radius:12px;padding:10px 16px;font:700 15px Mukta,sans-serif;cursor:pointer;background:linear-gradient(135deg,#E8751A,#D6336C);color:#fff;min-height:44px}
+.btn.o{background:none;border:2px solid var(--saf);color:var(--saf)}
+.btn.ok{background:var(--ok)}.btn.bad{background:var(--bad)}.btn.t{background:var(--teal)}
+.btn.s{min-height:36px;padding:5px 12px;font-size:14px}
+input,select,textarea{width:100%;font:inherit;color:var(--tx);background:var(--bg);border:2px solid var(--ln);border-radius:12px;padding:10px;margin:4px 0 10px}
+textarea{min-height:260px;line-height:1.9;font-family:"Noto Serif Devanagari",Georgia,serif}
+label{font-size:14px;color:var(--mu);font-weight:600}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sh{display:flex;justify-content:space-between;align-items:baseline;margin:22px 0 10px}.sh h2{font-size:20px;color:var(--mar)}
+:root[data-theme="dark"] .sh h2{color:var(--gold)}
+.empty{border:2px dashed var(--ln);border-radius:16px;padding:16px;color:var(--mu);background:var(--card)}
+.badge{display:inline-block;font-size:12px;border-radius:999px;padding:0 10px;font-weight:700;color:#fff;background:var(--mu)}
+.badge.pending_review{background:var(--saf)}.badge.published{background:var(--ok)}.badge.rejected{background:var(--bad)}
+.meta{color:var(--mu);font-size:13px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;align-items:center}
+.hero{position:relative;overflow:hidden;border-radius:22px;padding:22px 20px;color:#fff;background:linear-gradient(120deg,#7A1F3D,#D6336C 45%,#E8751A 80%,#E0B04B)}
+.hero h1{font-size:26px;line-height:1.35;max-width:80%}.hero p{margin:8px 0 14px;max-width:80%;opacity:.95}
+.hero svg{position:absolute;right:-30px;top:-30px;width:190px;opacity:.35}
+.hero .btn{background:#FFF6E6;color:var(--mar)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:10px}
+.tile{border:0;border-radius:16px;padding:12px 6px;color:#fff;font:700 14px Mukta,sans-serif;cursor:pointer;text-align:center;min-height:74px}
+.tile i{display:block;font-style:normal;font-size:24px}.tile.sel{outline:3px solid var(--tx);outline-offset:2px}
+.w{display:flex;gap:12px;margin-bottom:12px}
+.cv{flex:none;width:92px;min-height:122px;border-radius:12px;color:#fff;display:grid;place-items:center;text-align:center;padding:6px;font:800 13px/1.3 "Noto Serif Devanagari",serif;box-shadow:inset 0 0 0 3px rgba(255,255,255,.35)}
+.cv i{display:block;font-style:normal;font-size:26px}
+.chip{display:inline-block;font-size:12px;padding:0 9px;border-radius:999px;background:var(--bg);border:1px solid var(--ln);color:var(--mu)}
+.blog{display:grid;grid-template-columns:1fr;gap:16px}.blog .empty{grid-column:1/-1}
+.post{background:var(--card);border:1px solid var(--ln);border-radius:18px;overflow:hidden;box-shadow:0 3px 0 var(--ln);display:flex;flex-direction:column}
+.th{aspect-ratio:16/9;width:100%;position:relative;display:grid;place-items:center;color:#fff;cursor:pointer;overflow:hidden}
+.th img{width:100%;height:100%;object-fit:cover;display:block}.th .gl{font-size:46px}
+.th .tg{position:absolute;left:10px;top:10px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;font-weight:700;padding:1px 10px;border-radius:999px}
+.pb{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}.pb h3{font-size:19px;line-height:1.45;cursor:pointer}
+.ex{color:var(--mu);font-size:15px;line-height:1.6}
+.by{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mu);margin-top:auto;padding-top:6px}
+.av{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:13px;flex:none}
+@media(min-width:640px){.blog{grid-template-columns:1fr 1fr}.post.lead{grid-column:1/-1;flex-direction:row}.post.lead .th{width:58%;flex:none}.post.lead .pb h3{font-size:24px}}
+button.stat{border:0;cursor:pointer;font:inherit;min-height:84px}button.stat span{font-size:13px;font-weight:600}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(104px,1fr));gap:10px;margin-bottom:12px}
+.stat{border-radius:16px;padding:10px;text-align:center;color:#fff}.stat b{font:800 26px "Noto Serif Devanagari",serif;display:block}
+.ann{background:linear-gradient(90deg,#0C8599,#2B8A3E);color:#fff;border-radius:14px;padding:10px 14px;margin-bottom:12px}
+.body{line-height:2;transition:none}.body p{margin:0 0 1em;white-space:pre-wrap}
+.body.sepia{background:#F1E3C6;color:#3B2E1E;padding:14px;border-radius:14px}.body.dk{background:#15110F;color:#EADFCF;padding:14px;border-radius:14px}
+#pg{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#0C8599,#E0B04B,#D6336C);width:0;z-index:20}
+.tabs{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px}.tabs button{flex:none}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:100px;background:var(--mar);color:#fff;padding:10px 16px;border-radius:12px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:30}
+#toast.on{opacity:1}
+nav.bot{position:fixed;left:10px;right:10px;bottom:calc(8px + env(safe-area-inset-bottom,0px));background:var(--card);border:2px solid var(--gold);border-radius:22px;display:flex;padding:4px;z-index:6;max-width:560px;margin:0 auto;box-shadow:0 6px 20px rgba(122,31,61,.25)}
+nav.bot button{flex:1;background:none;border:0;font:700 12px Mukta,sans-serif;color:var(--mu);min-height:50px;cursor:pointer;border-radius:16px}
+nav.bot button i{display:block;font-style:normal;font-size:20px}
+nav.bot button.on{color:#fff;background:linear-gradient(135deg,#E8751A,#D6336C)}
+footer{text-align:center;margin:26px 0;color:var(--mu);font-size:13px}footer button{background:none;border:0;color:var(--mu);text-decoration:underline;font:inherit;cursor:pointer}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div id="pg"></div>
+<header>
+<div class="logo" aria-hidden="true"><span>ॐ</span></div>
+<div class="wm"><b>वेदपुराणसार</b><small>GLOBAL CONNECT</small></div>
+<div class="sp"></div>
+<button class="ib" id="th" aria-label="थीम बदलें">◐</button>
+</header>
+<main>
+<section class="view" id="v-home"></section>
+<section class="view" id="v-read"></section>
+<section class="view" id="v-write">
+<div class="card" style="background:linear-gradient(120deg,#0C8599,#5F3DC4);color:#fff"><b>✨ आज का लेखन-विषय</b><div id="pr" style="margin:4px 0 8px"></div><button class="btn s" style="background:#fff;color:#5F3DC4" id="np">नया विषय</button></div>
+<div class="sh" style="margin-top:0"><h2>लेखन स्टूडियो</h2><span class="meta" id="sv"></span></div>
+<div class="card">
+<label for="wt">शीर्षक</label><input id="wt" maxlength="200">
+<div class="g2"><div><label for="wy">प्रकार</label><select id="wy"></select></div><div><label for="wg">श्रेणी</label><select id="wg"></select></div>
+<div><label for="wl">भाषा</label><select id="wl"></select></div><input id="ww" type="hidden"></div>
+<label for="wi">🖼️ थंबनेल चित्र — गैलरी से चुनें (16:9 में अपने आप कटेगा)</label><input id="wi" type="file" accept="image/*"><div id="wip"></div><label for="wia">चित्र का विवरण (alt text)</label><input id="wia" maxlength="120" placeholder="चित्र में क्या है, संक्षेप में"><label for="wb">रचना</label><textarea id="wb" placeholder="यहाँ लिखें…"></textarea>
+<div class="meta" id="wc"></div>
+<label style="display:flex;gap:8px;align-items:center;margin:8px 0"><input type="checkbox" id="wr" style="width:auto;margin:0">मैं घोषित करता/करती हूँ कि यह मेरी मौलिक रचना है।</label>
+<div class="row"><button class="btn o" id="sd">ड्राफ़्ट सहेजें</button><button class="btn" id="sb">समीक्षा के लिए भेजें</button><button class="btn o" id="nw">नई रचना</button></div>
+</div>
+<div class="sh"><h2>मेरी रचनाएँ</h2></div><div id="mine"></div>
+</section>
+<section class="view" id="v-lib"></section>
+<section class="view" id="v-me"></section>
+<section class="view" id="v-admin"></section>
+<footer>© वेदपुराणसार</footer>
+</main>
+<div id="toast" role="status"></div>
+<nav class="bot" aria-label="नेविगेशन">
+<button data-v="home" class="on"><i>🏠</i>होम</button><button data-v="write"><i>✍️</i>लिखें</button><button data-v="lib"><i>📚</i>लाइब्रेरी</button><button data-v="me"><i>🙂</i>प्रोफ़ाइल</button>
+</nav>
+<script>
+var K="vps-db-v3",PIN="66a19903e4d014ba55c024942309e4b16dc187daecb4b135f8ffdb042a9f205b",PSALT="191d3d0126a9bb53",
+LANGS=["हिंदी","ગુજરાતી","संस्कृतम्","English","मराठी","বাংলা","தமிழ்","తెలుగు"],
+TYPES=["लघु कथा","उपन्यास","कविता","शायरी","लेख","आध्यात्मिक","संस्कृत श्लोक","ऐतिहासिक","बच्चों की कहानी"],
+GEN=[["सामाजिक","🏡","#E8751A"],["रोमांस","💞","#D6336C"],["रहस्य","🕵️","#5F3DC4"],["फ़ैंटेसी","🐉","#0C8599"],["प्रेरणा","🌅","#F08C00"],["सनातन ज्ञान","🕉️","#C2255C"],["वेद-पुराण","📜","#2B8A3E"],["इतिहास","🏛️","#7048E8"]],
+PAL=[["#E8751A","#D6336C"],["#0C8599","#5F3DC4"],["#2B8A3E","#0C8599"],["#7A1F3D","#E8751A"],["#5F3DC4","#D6336C"],["#F08C00","#C2255C"]],
+PR=["बरसात की पहली शाम में एक पुरानी चिट्ठी मिली…","एक गाँव जहाँ हर कोई सच बोलता है","माँ की रसोई की कोई याद","अगर समय एक दिन के लिए रुक जाए","एक श्लोक जिसने जीवन बदल दिया","नदी किनारे का आख़िरी दीया","दो अजनबी, एक ट्रेन, एक रात"],
+EM=["😍","👏","😢","🙏"];
+GEN=GEN.filter(function(g){return g[1]!=="💞"&&g[1]!=="🐉"});
+function load(){try{var d=JSON.parse(localStorage.getItem(K));if(d&&d.works)return d}catch(e){}
+return{works:[],audit:[],likes:{},marks:{},me:"",cur:null,fs:18,rth:"",follows:{},cm:[],rx:{},myrx:{},hist:[],days:{},goal:300,ann:"",chal:"",banned:[],fails:0,lock:0,adminUntil:0,pin:""}}
+var db=load(),openId=null,fg="",pi=0;db.fl=db.fl||[];db.ev=db.ev||[];db.views=db.views||{};
+function ev(k,w,e){db.ev.unshift({k:k,by:db.me||"अतिथि",w:w,e:e||"",t:Date.now()});db.ev=db.ev.slice(0,300)}
+function save(){try{localStorage.setItem(K,JSON.stringify(db));return true}catch(e){return false}}
+function log(a){db.audit.unshift({t:Date.now(),a:a});db.audit=db.audit.slice(0,60)}
+function $(i){return document.getElementById(i)}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function btn(txt,cls,fn){var b=el("button","btn s "+(cls||""),txt);b.onclick=fn;return b}
+function toast(m){var t=$("toast");t.textContent=m;t.className="on";setTimeout(function(){t.className=""},2400)}
+function words(s){var m=s.trim().match(/\S+/g);return m?m.length:0}
+function mins(s){return Math.max(1,Math.ceil(words(s)/200))}
+function clr(n){var h=0;for(var i=0;i<n.length;i++)h=(h*31+n.charCodeAt(i))>>>0;return PAL[h%PAL.length]}
+function gcol(g){for(var i=0;i<GEN.length;i++)if(GEN[i][0]===g)return GEN[i]; return GEN[0]}
+function dk(d){d=d||new Date();return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate()}
+function pbk(pw){var e=new TextEncoder();return crypto.subtle.importKey("raw",e.encode(pw),"PBKDF2",false,["deriveBits"]).then(function(k){return crypto.subtle.deriveBits({name:"PBKDF2",salt:e.encode("vps-admin-v1:"+PSALT),iterations:200000,hash:"SHA-256"},k,256)}).then(function(b){return[].map.call(new Uint8Array(b),function(x){return("0"+x.toString(16)).slice(-2)}).join("")})}
+function sha(s){return crypto.subtle.digest("SHA-256",new TextEncoder().encode(s)).then(function(b){return[].map.call(new Uint8Array(b),function(x){return("0"+x.toString(16)).slice(-2)}).join("")})}
+function adminOK(){return db.adminUntil>Date.now()}
+function fill(id,arr,all){var s=$(id);s.textContent="";if(all){var o=el("option","",all);o.value="";s.appendChild(o)}arr.forEach(function(x){var o=el("option","",x);o.value=x;s.appendChild(o)})}
+fill("wy",TYPES);fill("wg",GEN.map(function(g){return g[0]}));fill("wl",LANGS);
+var ST={draft:"ड्राफ़्ट",pending_review:"समीक्षा में",published:"प्रकाशित",rejected:"अस्वीकृत"};
+function badge(s){return el("span","badge "+s,ST[s]||s)}
+function pub(){return db.works.filter(function(w){return w.status==="published"})}
+function byId(id){return db.works.filter(function(x){return x.id===id})[0]}
+
+/* nav */
+function go(v){[].forEach.call(document.querySelectorAll(".view"),function(x){x.className="view"+(x.id==="v-"+v?" on":"")});
+[].forEach.call(document.querySelectorAll("nav.bot button"),function(b){b.className=b.dataset.v===v?"on":""});
+$("pg").style.width="0";({home:renderHome,write:renderMine,lib:renderLib,me:renderMe,admin:renderAdmin})[v]();window.scrollTo(0,0)}
+[].forEach.call(document.querySelectorAll("nav.bot button"),function(b){b.onclick=function(){go(b.dataset.v)}});
+var lt=0,ltm=0;function tap(){var n=Date.now();lt=n-ltm<2500?lt+1:1;ltm=n;if(lt>=4){lt=0;go("admin")}}[].forEach.call(document.querySelectorAll("header .logo,header .wm"),function(x){x.onclick=tap});
+
+/* cards */
+function cover(w){var p=clr(w.title||"x"),g=gcol(w.genre),c=el("div","cv");c.style.background="linear-gradient(150deg,"+p[0]+","+p[1]+")";if(w.img){c.style.background='linear-gradient(transparent 35%,rgba(0,0,0,.75)),url("'+w.img+'") center/cover';c.style.alignContent="end"}var i=el("i","",g[1]);c.appendChild(i);c.appendChild(document.createTextNode(w.title));return c}
+function card(w,lead){var p=clr(w.title||"x"),g=gcol(w.genre),c=el("article","post"+(lead?" lead":""));
+function op(){openWork(w.id)}
+var th=el("div","th");th.tabIndex=0;th.setAttribute("role","button");th.setAttribute("aria-label",w.title+" पढ़ें");
+if(w.img){var im=el("img");im.src=w.img;im.alt=w.alt||"";im.loading="lazy";th.appendChild(im)}else{th.style.background="linear-gradient(135deg,"+p[0]+","+p[1]+")";th.appendChild(el("span","gl",g[1]))}
+th.appendChild(el("span","tg",g[0]));th.onclick=op;th.onkeydown=function(e){if(e.key==="Enter")op()};c.appendChild(th);
+var b=el("div","pb"),h=el("h3","",w.title);h.onclick=op;b.appendChild(h);
+var t=w.body.replace(/\s+/g," ").trim();b.appendChild(el("div","ex",t.length>110?t.slice(0,110)+"…":t));
+var by=el("div","by"),ap=clr(w.author),av=el("span","av",w.author.charAt(0));av.style.background="linear-gradient(150deg,"+ap[0]+","+ap[1]+")";by.appendChild(av);
+by.appendChild(document.createTextNode(w.author+" · "+new Date(w.pubAt||w.created).toLocaleDateString("hi-IN",{day:"numeric",month:"short"})+" · "+mins(w.body)+" मिनट · ♥ "+(db.likes[w.id]||0)));
+b.appendChild(by);c.appendChild(b);return c}
+
+/* home */
+function renderHome(){var h=$("v-home");h.textContent="";
+if(db.ann)h.appendChild(el("div","ann","📣 "+db.ann));
+var hero=el("div","hero");hero.innerHTML='<svg viewBox="0 0 200 200" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="2"><circle cx="100" cy="100" r="90"/><circle cx="100" cy="100" r="60"/><circle cx="100" cy="100" r="30"/><path d="M100 10v180M10 100h180M36 36l128 128M164 36L36 164"/></g></svg>';
+hero.appendChild(el("h1","","पढ़ें, लिखें और जुड़ें — अपनी भाषा में"));hero.appendChild(el("p","","हर रचना संपादक की स्वीकृति के बाद यहीं प्रकाशित होती है।"));
+hero.appendChild(btn("✍️ अपनी रचना लिखें","",function(){go("write")}));var hs=btn("📤 साइट शेयर करें","",function(){var o=$("shw");o.style.display=o.style.display==="none"?"block":"none"});hs.style.cssText="margin-left:8px;background:rgba(255,255,255,.25);color:#fff";hero.appendChild(hs);h.appendChild(hero);var sw=sharePanel(null);sw.id="shw";sw.style.display="none";sw.style.marginTop="12px";h.appendChild(sw);
+h.appendChild(sh("श्रेणियाँ"));var t=el("div","tiles");GEN.forEach(function(g){var b=el("button","tile"+(fg===g[0]?" sel":""));b.style.background=g[2];b.appendChild(el("i","",g[1]));b.appendChild(document.createTextNode(g[0]));b.onclick=function(){fg=fg===g[0]?"":g[0];renderHome()};t.appendChild(b)});h.appendChild(t);
+var ll=sh("🆕 प्रकाशित रचनाएँ"+(fg?" — "+fg:""));var cn=el("span","meta");ll.appendChild(cn);h.appendChild(ll);
+var f=el("div","g2");f.innerHTML='<div><label for="q">🔍 खोजें</label><input id="q" type="search" placeholder="शीर्षक, लेखक…"></div><div><label for="fl">भाषा</label><select id="fl"></select></div><div><label for="fs">क्रम</label><select id="fs"><option value="new">नई पहले</option><option value="like">सबसे पसंदीदा</option><option value="short">छोटी रचनाएँ</option></select></div>';h.appendChild(f);
+fill("fl",LANGS,"सभी भाषाएँ");var L=el("div","blog");h.appendChild(L);
+function list(){var q=$("q").value.trim().toLowerCase(),l=$("fl").value,s=$("fs").value;
+var r=pub().filter(function(w){return(!q||(w.title+" "+w.author+" "+w.type).toLowerCase().indexOf(q)>-1)&&(!l||w.lang===l)&&(!fg||w.genre===fg)});
+if(s==="new")r.sort(function(a,b){return b.pubAt-a.pubAt});if(s==="like")r.sort(function(a,b){return(db.likes[b.id]||0)-(db.likes[a.id]||0)});if(s==="short")r=r.filter(function(w){return mins(w.body)<=5});
+L.textContent="";cn.textContent=r.length+" रचनाएँ";if(!r.length)L.appendChild(el("div","empty",pub().length?"इस फ़िल्टर में कोई रचना नहीं मिली।":"अभी कोई रचना प्रकाशित नहीं हुई है। संपादक की स्वीकृति के बाद पहली रचना यहाँ दिखेगी।"));r.forEach(function(w,i){L.appendChild(card(w,i===0&&r.length>1&&!q&&!l&&!fg&&s==="new"))})}
+["q","fl","fs"].forEach(function(i){$(i).oninput=list});list();
+var fe=pub().filter(function(w){return w.featured});if(fe.length){h.appendChild(sh("⭐ संपादक की पसंद"));var fb=el("div","blog");fe.forEach(function(w){fb.appendChild(card(w))});h.appendChild(fb)}
+var ch=el("div","card");ch.style.cssText="margin-top:14px;background:linear-gradient(120deg,#5F3DC4,#0C8599);color:#fff";ch.appendChild(el("b","","🏆 साप्ताहिक लेखन चुनौती"));ch.appendChild(el("div","",db.chal||"इस सप्ताह की चुनौती जल्द घोषित होगी।"));h.appendChild(ch);
+var au={};pub().forEach(function(w){au[w.author]=(au[w.author]||0)+1});var names=Object.keys(au);
+if(names.length){h.appendChild(sh("🌟 लेखक"));var wr=el("div","row");names.forEach(function(n){var p=clr(n),b=el("button","tile",n.charAt(0)+" · "+n);b.style.cssText="background:linear-gradient(150deg,"+p[0]+","+p[1]+");min-height:0;padding:8px 14px";b.onclick=function(){$("q").value=n;list();window.scrollTo(0,0);toast(n+" की रचनाएँ")};wr.appendChild(b)});h.appendChild(wr)}}
+function sh(t){var d=el("div","sh");d.appendChild(el("h2","",t));return d}
+
+/* sharing */
+var SITE="https://vedpuransarblogpost.com";if(db.site&&(/claude\.ai/.test(db.site)||db.site==="https://vedpuransar.com"))db.site="";
+function wlink(w){return(db.site||SITE).replace(/#.*$/,"")+(w?"#"+w.id:"")}
+function copyTxt(t){function fb(){var x=document.createElement("textarea");x.value=t;x.style.cssText="position:fixed;opacity:0";document.body.appendChild(x);x.select();var ok=false;try{ok=document.execCommand("copy")}catch(e){}document.body.removeChild(x);toast(ok?"लिंक कॉपी हो गया ✓":"कॉपी नहीं हुआ — लिंक दबाकर कॉपी करें")}
+if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(function(){toast("लिंक कॉपी हो गया ✓")},fb);else fb()}
+function stext(w){if(!w)return"📖 वेदपुराणसार ग्लोबल कनेक्ट — हिंदी, गुजराती, संस्कृत साहित्य का मंच\n"+wlink();var t=w.body.replace(/\s+/g," ").trim();return"📖 "+w.title+" — "+w.author+"\n"+(t.length>90?t.slice(0,90)+"…":t)+"\nपूरा पढ़ें: "+wlink(w)}
+function sharePanel(w){var d=el("div","card");d.appendChild(el("b","",w?"📤 इस रचना को शेयर करें":"📤 वेबसाइट शेयर करें"));var u=wlink(w),t=stext(w);
+var i=el("input");i.readOnly=true;i.value=u;i.setAttribute("aria-label","लिंक");i.onfocus=function(){i.select()};d.appendChild(i);var r=el("div","row");
+function cnt(){if(w){db.shares=db.shares||{};db.shares[w.id]=(db.shares[w.id]||0)+1;ev("share",w.id);save()}}
+r.appendChild(btn("🔗 लिंक कॉपी","",function(){copyTxt(u);cnt()}));
+if(navigator.share)r.appendChild(btn("📤 शेयर","t",function(){navigator.share({title:w?w.title:"वेदपुराणसार",text:t,url:u}).then(cnt,function(){})}));
+[["WhatsApp","https://wa.me/?text="+encodeURIComponent(t),"#1F8A4C"],["X","https://twitter.com/intent/tweet?text="+encodeURIComponent(t),"#29231F"]].forEach(function(x){var a=el("a","btn s",x[0]);a.href=x[1];a.target="_blank";a.rel="noopener";a.style.cssText="background:"+x[2]+";display:inline-flex;align-items:center";a.onclick=cnt;r.appendChild(a)});
+d.appendChild(r);return d}
+
+/* image export: long 8K, 9:16 cover, 9:16 pages (zip) */
+var F1='"Noto Serif Devanagari",Georgia,serif',F2='Mukta,"Noto Sans Devanagari",sans-serif',MC=document.createElement("canvas").getContext("2d");
+function ready(){return document.fonts?Promise.all([document.fonts.load('800 40px "Noto Serif Devanagari"'),document.fonts.load('400 40px Mukta'),document.fonts.load('700 40px Mukta')]).catch(function(){}):Promise.resolve()}
+function wrap(cx,text,mw){var out=[];String(text).split("\n").forEach(function(p){p=p.trim();if(!p){if(out.length&&out[out.length-1]!=="")out.push("");return}var ln="";p.split(/\s+/).forEach(function(x){var t=ln?ln+" "+x:x;if(ln&&cx.measureText(t).width>mw){out.push(ln);ln=x}else ln=t});if(ln)out.push(ln)});return out}
+function T(cx,f,c,s,x,y,al){cx.font=f;cx.fillStyle=c;cx.textAlign=al||"left";cx.textBaseline="alphabetic";cx.fillText(s,x,y)}
+function rr(cx,x,y,w,h,r){cx.beginPath();cx.moveTo(x+r,y);cx.arcTo(x+w,y,x+w,y+h,r);cx.arcTo(x+w,y+h,x,y+h,r);cx.arcTo(x,y+h,x,y,r);cx.arcTo(x,y,x+w,y,r);cx.closePath()}
+function bg(cx,W,H){cx.fillStyle="#FFF6E6";cx.fillRect(0,0,W,H)}
+function logoD(cx,x,y,r){cx.beginPath();cx.arc(x,y,r,0,7);cx.fillStyle="#E0B04B";cx.fill();cx.beginPath();cx.arc(x,y,r*.83,0,7);cx.fillStyle="#7A1F3D";cx.fill();T(cx,"800 "+Math.round(r*.96)+"px "+F1,"#fff","ॐ",x,y+r*.33,"center")}
+function stime(w){return new Date(w.pubAt||w.created).toLocaleString("hi-IN",{day:"numeric",month:"short",year:"numeric",hour:"numeric",minute:"2-digit"})}
+function bandD(cx,W,bare){if(!bare){var g=cx.createLinearGradient(0,0,W,0);g.addColorStop(0,"#7A1F3D");g.addColorStop(.55,"#C2255C");g.addColorStop(1,"#E8751A");cx.fillStyle=g;cx.fillRect(0,0,W,150)}
+logoD(cx,95,75,46);T(cx,"800 52px "+F1,"#fff","वेदपुराणसार",162,92)}
+function foot(cx,W,y,h,a,b){var g=cx.createLinearGradient(0,0,W,0);g.addColorStop(0,"#7A1F3D");g.addColorStop(1,"#E8751A");cx.fillStyle=g;cx.fillRect(0,y,W,h);logoD(cx,120,y+h/2,46);if(a){T(cx,"700 36px "+F2,"#fff",a,W/2,y+h/2-6,"center");T(cx,"600 30px "+F2,"#FFF6E6",b,W/2,y+h/2+44,"center")}else T(cx,"800 48px "+F1,"#fff",b,W/2,y+h/2+16,"center")}
+function thumb(cx,w,x,y,tw,th){return new Promise(function(res){function g(){var p=clr(w.title||"x"),gr=cx.createLinearGradient(x,y,x+tw,y+th);gr.addColorStop(0,p[0]);gr.addColorStop(1,p[1]);cx.fillStyle=gr;cx.fillRect(x,y,tw,th);T(cx,"150px "+F2,"#fff",gcol(w.genre)[1],x+tw/2,y+th/2+52,"center")}
+cx.save();rr(cx,x,y,tw,th,28);cx.clip();if(w.img){var im=new Image();im.onload=function(){cx.drawImage(im,x,y,tw,th);cx.restore();res()};im.onerror=function(){g();cx.restore();res()};im.src=w.img}else{g();cx.restore();res()}})}
+function metaS(w){return w.author+" · "+w.type+" · "+stime(w)+" · "+mins(w.body)+" मिनट"}
+function host(w){return"VedPuranSar"}
+function longLayout(w){var W=1080,P=70,tw=W-2*P,th=Math.round(tw*9/16);
+MC.font="800 62px "+F1;var tl=wrap(MC,w.title,tw);MC.font="600 30px "+F2;var ml=wrap(MC,metaS(w),tw);MC.font="400 40px "+F2;var bl=wrap(MC,w.body,tw);
+var y0=200,ty=y0+th+60,my=ty+tl.length*90+10,by=my+ml.length*44+50,fy=by+bl.length*76+60,H=fy+190;
+return{W:W,H:H,draw:function(cx){bg(cx,W,H);bandD(cx,W,false);return thumb(cx,w,P,y0,tw,th).then(function(){
+tl.forEach(function(l,i){T(cx,"800 62px "+F1,"#7A1F3D",l,P,ty+62+i*90)});ml.forEach(function(l,i){T(cx,"600 30px "+F2,"#7A6E66",l,P,my+30+i*44)});
+var g=cx.createLinearGradient(P,0,W-P,0);g.addColorStop(0,"#E8751A");g.addColorStop(1,"#D6336C");cx.fillStyle=g;cx.fillRect(P,by-26,tw,6);
+bl.forEach(function(l,i){if(l)T(cx,"400 40px "+F2,"#2B2320",l,P,by+40+i*76)});foot(cx,W,fy,190,"",host(w))})}}}
+function coverLayout(w,H){H=H||1920;var W=1080,P=70,tw=W-2*P,th=Math.round(tw*9/16),cp=H>1700,mt=cp?4:3,ty=cp?270:200;
+MC.font="800 76px "+F1;var tl=wrap(MC,w.title,tw);if(tl.length>mt){tl=tl.slice(0,mt);tl[mt-1]=tl[mt-1].slice(0,Math.max(1,tl[mt-1].length-2))+"…"}
+MC.font="400 38px "+F2;var ex=wrap(MC,w.body.replace(/\s+/g," ").trim().slice(0,240)+"…",tw).slice(0,cp?4:0);
+return{W:W,H:H,draw:function(cx){var g=cx.createLinearGradient(0,0,W,H);g.addColorStop(0,"#7A1F3D");g.addColorStop(.5,"#C2255C");g.addColorStop(1,"#E8751A");cx.fillStyle=g;cx.fillRect(0,0,W,H);bandD(cx,W,true);
+return thumb(cx,w,P,ty,tw,th).then(function(){var y=ty+th+(cp?110:70);tl.forEach(function(l,i){T(cx,"800 76px "+F1,"#fff",l,P,y+i*92)});y+=tl.length*92+10;
+T(cx,"700 36px "+F2,"#FFE7B0","✍️ "+w.author+" · "+w.type,P,y);T(cx,"600 30px "+F2,"#FFE7B0","🕒 "+stime(w),P,y+46);y+=116;ex.forEach(function(l,i){T(cx,"400 38px "+F2,"rgba(255,255,255,.95)",l,P,y+i*58)});
+var by=cp?1690:H-170,bh=cp?160:130;rr(cx,P,by,tw,bh,32);cx.fillStyle="#FFF6E6";cx.fill();T(cx,"800 56px "+F1,"#7A1F3D",host(w),W/2,by+bh/2+20,"center")})}}}
+function pageLayouts(w,H){H=H||1920;var W=1080,P=70,tw=W-2*P;MC.font="400 40px "+F2;var bl=wrap(MC,w.body,tw),cap=Math.floor((H-550)/76)+1,n=Math.max(1,Math.ceil(bl.length/cap)),out=[];
+for(var i=0;i<n;i++)(function(i){out.push({W:W,H:H,draw:function(cx){bg(cx,W,H);bandD(cx,W,false);var t=w.title;cx.font="800 36px "+F1;while(t.length>3&&cx.measureText(t).width>tw)t=t.slice(0,-2);if(t!==w.title)t+="…";T(cx,"800 36px "+F1,"#7A1F3D",t,P,230);T(cx,"600 28px "+F2,"#7A6E66","🕒 "+stime(w),P,278);
+bl.slice(i*cap,(i+1)*cap).forEach(function(l,k){if(l)T(cx,"400 40px "+F2,"#2B2320",l,P,330+k*76)});foot(cx,W,H-160,160,(i+1)+" / "+n,host(w))}})})(i);return out}
+function mk(lay,ws){return new Promise(function(res,rej){var i=0;(function tr(){if(i>=ws.length)return rej(new Error("canvas"));var pw=ws[i++],k=pw/lay.W,c=document.createElement("canvas");c.width=pw;c.height=Math.round(lay.H*k);if(c.height>32000)return tr();
+var cx=c.getContext("2d");if(!cx)return tr();cx.scale(k,k);Promise.resolve(lay.draw(cx)).then(function(){c.toBlob(function(b){if(b&&b.size>0)res({blob:b,w:c.width,h:c.height});else tr()},"image/png")},tr)})()})}
+function crc32(u){var t=crc32.t;if(!t){t=crc32.t=[];for(var n=0;n<256;n++){var c=n;for(var k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}}var c2=-1;for(var i=0;i<u.length;i++)c2=t[(c2^u[i])&255]^(c2>>>8);return(c2^-1)>>>0}
+function zip(files){var parts=[],cen=[],off=0,enc=new TextEncoder();files.forEach(function(f){var nm=enc.encode(f.name),d=f.data,crc=crc32(d),h=new DataView(new ArrayBuffer(30));
+h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x0800,true);h.setUint16(12,0x21,true);h.setUint32(14,crc,true);h.setUint32(18,d.length,true);h.setUint32(22,d.length,true);h.setUint16(26,nm.length,true);
+parts.push(h.buffer,nm,d);var c=new DataView(new ArrayBuffer(46));c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);c.setUint16(8,0x0800,true);c.setUint16(14,0x21,true);c.setUint32(16,crc,true);c.setUint32(20,d.length,true);c.setUint32(24,d.length,true);c.setUint16(28,nm.length,true);c.setUint32(42,off,true);cen.push(c.buffer,nm);off+=30+nm.length+d.length});
+var cs=0;cen.forEach(function(b){cs+=b.byteLength});var e=new DataView(new ArrayBuffer(22));e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,cs,true);e.setUint32(16,off,true);return new Blob(parts.concat(cen,[e.buffer]),{type:"application/zip"})}
+function anchorSave(name,blob){var u=URL.createObjectURL(blob),a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){a.remove();URL.revokeObjectURL(u)},5000)}
+function saveFile(name,blob){if(window.claude&&claude.use){return claude.use("downloads").then(function(d){return d?d.save({filename:name,data:blob}):anchorSave(name,blob)})}anchorSave(name,blob);return Promise.resolve()}
+function exportPanel(w){var d=el("div","card");d.appendChild(el("b","","🖼️ इमेज के रूप में डाउनलोड (8K)"));d.appendChild(el("div","meta","फ़ोन की क्षमता से 8K न बन पाए तो अपने आप 4K/2K में बनेगी।"));
+var st=el("div","meta");st.setAttribute("role","status");var r=el("div","row"),bs=[],fn="vedpuransar-"+w.id;
+function run(label,job){bs.forEach(function(b){b.disabled=true});st.textContent="⏳ "+label+" तैयार हो रही है… कृपया रुकें";ready().then(job).then(function(m){st.textContent="✓ "+m}).catch(function(e){st.textContent=e&&e.code==="declined"?"डाउनलोड रद्द किया गया।":"❌ इमेज नहीं बन सकी। छोटी रचना या दूसरा विकल्प आज़माएँ।"}).then(function(){bs.forEach(function(b){b.disabled=false})})}
+function mkb(t,c,fn2){var b=btn(t,c,fn2);bs.push(b);r.appendChild(b)}
+mkb("📜 लंबी इमेज (8K)","",function(){run("लंबी इमेज",function(){return mk(longLayout(w),[7680,3840,2160,1080]).then(function(m){return saveFile(fn+"-lambi.png",m.blob).then(function(){return"लंबी इमेज तैयार: "+m.w+"×"+m.h+" px"+(m.w<7680?" (फ़ोन की सीमा से कम)":"")})})})});
+mkb("📱 9:16 कवर (8K)","t",function(){run("9:16 कवर",function(){return mk(coverLayout(w),[4320,2160,1080]).then(function(m){return saveFile(fn+"-9x16-cover.png",m.blob).then(function(){return"9:16 कवर तैयार: "+m.w+"×"+m.h+" px"+(m.w<4320?" (फ़ोन की सीमा से कम)":"")})})})});
+function zr(H,ws0,nm,lb,rt){return function(){run(lb,function(){var lays=[coverLayout(w,H)].concat(pageLayouts(w,H)),files=[],ws=ws0.slice(),fw=0;
+return lays.reduce(function(p,l,i){return p.then(function(){st.textContent="⏳ पेज "+(i+1)+" / "+lays.length+" बन रहा है…";return mk(l,ws)}).then(function(m){fw=m.w;ws=ws.filter(function(x){return x<=m.w});return m.blob.arrayBuffer()}).then(function(buf){files.push({name:"page-"+("0"+(i+1)).slice(-2)+".png",data:new Uint8Array(buf)})})},Promise.resolve())
+.then(function(){return saveFile(fn+"-"+nm+"-pages.zip",zip(files))}).then(function(){return lays.length+" पेज ("+rt+") ZIP में तैयार: "+fw+"×"+Math.round(fw*H/1080)+" px"})})}}
+mkb("📚 9:16 पूरे पेज (ZIP)","o",zr(1920,[4320,2160,1080],"9x16","9:16 पेज","9:16"));
+mkb("🖼️ 4:5 कवर (8K)","t",function(){run("4:5 कवर",function(){return mk(coverLayout(w,1350),[6144,3072,1080]).then(function(m){return saveFile(fn+"-4x5-cover.png",m.blob).then(function(){return"4:5 कवर तैयार: "+m.w+"×"+m.h+" px"+(m.w<6144?" (फ़ोन की सीमा से कम)":"")})})})});
+mkb("🗂️ 4:5 पूरे पेज (ZIP)","o",zr(1350,[6144,3072,1080],"4x5","4:5 पेज","4:5"));
+d.appendChild(r);d.appendChild(st);return d}
+
+/* reader */
+function openWork(id,from){window.__from=from||"home";var w=byId(id);if(!w||(w.status!=="published"&&!adminOK()&&!(db.me&&w.author===db.me)))return;openId=id;
+if(w.status==="published"){db.hist=[id].concat(db.hist.filter(function(x){return x!==id})).slice(0,20);if(!adminOK())db.views[id]=(db.views[id]||0)+1;save()}
+[].forEach.call(document.querySelectorAll(".view"),function(x){x.className="view"+(x.id==="v-read"?" on":"")});drawRead(w);window.scrollTo(0,0)}
+function drawRead(w){var r=$("v-read");r.textContent="";var top=el("div","row");top.appendChild(btn("← वापस","o",function(){go(window.__from||"home")}));
+top.appendChild(btn("A−","o",function(){db.fs=Math.max(14,db.fs-2);save();drawRead(w)}));top.appendChild(btn("A+","o",function(){db.fs=Math.min(32,db.fs+2);save();drawRead(w)}));
+[["","☀"],["sepia","📖"],["dk","🌙"]].forEach(function(x){top.appendChild(btn(x[1],db.rth===x[0]?"t":"o",function(){db.rth=x[0];save();drawRead(w)}))});r.appendChild(top);
+var c=el("div","card");c.style.marginTop="12px";if(w.img){var im=el("img");im.src=w.img;im.alt=w.alt||w.title;im.style.cssText="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;margin-bottom:10px";c.appendChild(im)}c.appendChild(el("h1","",w.title));var a=el("div","meta","✍️ "+w.author+" · "+w.type+" · "+w.lang+" · "+mins(w.body)+" मिनट");c.appendChild(a);
+if(w.status!=="published")c.appendChild(badge(w.status));
+var b=el("div","body "+db.rth);b.style.fontSize=db.fs+"px";b.style.marginTop="12px";b.appendChild(el("p","",w.body));c.appendChild(b);r.appendChild(c);
+if(w.status!=="published")return;
+var row=el("div","row");var liked=db.likes["u:"+w.id];
+row.appendChild(btn((liked?"♥ पसंद हटाएँ":"♡ पसंद करें")+" ("+(db.likes[w.id]||0)+")","o",function(){db.likes["u:"+w.id]=!liked;db.likes[w.id]=Math.max(0,(db.likes[w.id]||0)+(liked?-1:1));ev(liked?"unlike":"like",w.id);save();drawRead(w)}));
+var mk=db.marks[w.id];row.appendChild(btn(mk?"★ सहेजा गया":"☆ सहेजें","o",function(){if(mk)delete db.marks[w.id];else{db.marks[w.id]=1;ev("save",w.id)}save();drawRead(w)}));
+var fo=db.follows[w.author];row.appendChild(btn(fo?"✓ फ़ॉलो किया":"+ लेखक फ़ॉलो","t",function(){if(fo){delete db.follows[w.author];db.fl=db.fl.filter(function(x){return!(x.to===w.author&&x.by===(db.me||"अतिथि"))})}else{db.follows[w.author]=1;db.fl.push({by:db.me||"अतिथि",to:w.author,t:Date.now()})}save();drawRead(w)}));
+row.appendChild(btn("🚩 रिपोर्ट","o",function(){var rs=prompt("रिपोर्ट का कारण?");if(rs&&rs.trim()){w.reports=(w.reports||[]).concat([rs.trim()]);log("रिपोर्ट: "+w.title+" — "+rs.trim());save();toast("रिपोर्ट भेजी गई")}}));r.appendChild(row);
+var rx=el("div","row");EM.forEach(function(e){var k=w.id+e,on=db.myrx[k];rx.appendChild(btn(e+" "+((db.rx[w.id]||{})[e]||0),on?"t":"o",function(){var m=db.rx[w.id]=db.rx[w.id]||{};if(on){m[e]--;delete db.myrx[k]}else{m[e]=(m[e]||0)+1;db.myrx[k]=1;ev("rx",w.id,e)}save();drawRead(w)}))});r.appendChild(rx);r.appendChild(sharePanel(w));r.appendChild(exportPanel(w));
+r.appendChild(sh("💬 टिप्पणियाँ"));var cm=db.cm.filter(function(x){return x.w===w.id&&!x.hide});
+if(!cm.length)r.appendChild(el("div","empty","पहली टिप्पणी आप लिखें — सम्मान के साथ।"));
+cm.forEach(function(x){var d=el("div","card");d.appendChild(el("b","",x.by));d.appendChild(el("div","",x.tx));r.appendChild(d)});
+if(db.banned.indexOf(db.me)>-1){r.appendChild(el("div","empty","आपके खाते पर टिप्पणी की रोक है।"));return}
+var ta=el("textarea");ta.style.minHeight="70px";ta.maxLength=500;ta.placeholder="अपनी टिप्पणी…";r.appendChild(ta);
+r.appendChild(btn("टिप्पणी भेजें","",function(){var t=ta.value.trim();if(!db.me)return toast("पहले प्रोफ़ाइल में अपना नाम लिखें");if(!t)return;db.cm.push({id:Date.now(),w:w.id,by:db.me,tx:t,t:Date.now()});save();drawRead(w)}))}
+window.addEventListener("scroll",function(){if(!$("v-read").classList.contains("on"))return;var h=document.documentElement;$("pg").style.width=Math.min(100,h.scrollTop/(h.scrollHeight-h.clientHeight||1)*100)+"%"});
+
+/* writer */
+var timer=null,curImg="";
+$("wia").oninput=function(){auto()};
+$("wi").onchange=function(){var f=this.files[0];if(!f)return;if(!/^image\//.test(f.type))return toast("केवल चित्र चुनें");if(f.size>12e6)return toast("चित्र बहुत बड़ा है (12MB तक)");
+var fr=new FileReader();fr.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement("canvas");c.width=960;c.height=540;var k=Math.max(960/im.width,540/im.height),dw=im.width*k,dh=im.height*k;c.getContext("2d").drawImage(im,(960-dw)/2,(540-dh)/2,dw,dh);curImg=c.toDataURL("image/jpeg",.75);prev();auto()};im.onerror=function(){toast("यह चित्र खुल नहीं सका")};im.src=fr.result};fr.onerror=function(){toast("चित्र पढ़ा नहीं जा सका")};fr.readAsDataURL(f)};
+function prev(){var p=$("wip");p.textContent="";if(!curImg)return;var i=el("img");i.src=curImg;i.alt="चयनित चित्र";i.style.cssText="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;display:block;margin:4px 0";p.appendChild(i);p.appendChild(btn("चित्र हटाएँ","bad",function(){curImg="";$("wi").value="";prev();auto()}))}
+function curDraft(){return byId(db.cur)}
+function readForm(){return{title:$("wt").value.trim(),type:$("wy").value,genre:$("wg").value,lang:$("wl").value,warn:$("ww").value.trim(),body:$("wb").value,img:curImg,alt:$("wia").value.trim()}}
+function stat(){var b=$("wb").value;$("wc").textContent=words(b)+" शब्द · "+b.length+" अक्षर · "+mins(b)+" मिनट पढ़ने में"}
+function persist(manual){if(!db.me){if(manual)toast("पहले प्रोफ़ाइल में अपना नाम लिखें");return null}
+if(db.banned.indexOf(db.me)>-1){toast("आपके खाते पर प्रकाशन की रोक है");return null}
+var f=readForm();if(!f.title&&!f.body){if(manual)toast("पहले कुछ लिखें");return null}
+var w=curDraft();if(!w){w={id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),status:"draft",created:Date.now(),wc:0};db.works.push(w);db.cur=w.id}
+if(w.status==="pending_review"||w.status==="published"){toast("समीक्षा में/प्रकाशित रचना संपादित नहीं हो सकती");return null}
+var n=words(f.body),dl=Math.max(0,n-(w.wc||0));w.wc=n;if(dl)db.days[dk()]=(db.days[dk()]||0)+dl;
+for(var k in f)w[k]=f[k];w.author=db.me;var ok=save();$("sv").textContent=ok?"सहेजा गया ✓":"सहेजना विफल — सामग्री कॉपी कर लें";$("sv").style.color=ok?"var(--ok)":"var(--bad)";renderMine();return w}
+function auto(){stat();$("sv").textContent="सहेजा जा रहा है…";$("sv").style.color="";clearTimeout(timer);timer=setTimeout(function(){persist(false)},900)}
+["wt","wy","wg","wl","ww","wb"].forEach(function(i){$(i).oninput=auto;$(i).onchange=auto});
+$("sd").onclick=function(){if(persist(true))toast("ड्राफ़्ट सहेजा गया")};
+$("sb").onclick=function(){var f=readForm();if(!db.me)return toast("पहले प्रोफ़ाइल में अपना नाम लिखें");if(!f.title)return toast("शीर्षक आवश्यक है");if(words(f.body)<10)return toast("रचना कम से कम 10 शब्द की हो");if(!$("wr").checked)return toast("मौलिकता की घोषणा आवश्यक है");
+var w=persist(true);if(!w)return;w.status="pending_review";w.submittedAt=Date.now();w.reason="";log("भेजी गई: "+w.title+" — "+w.author);db.cur=null;save();clearForm();renderMine();toast("समीक्षा के लिए भेज दी गई 🎉")};
+function clearForm(){["wt","ww","wb","wia","wi"].forEach(function(i){$(i).value=""});curImg="";prev();$("wr").checked=false;$("sv").textContent="";stat()}
+$("nw").onclick=function(){db.cur=null;clearForm();save()};
+$("np").onclick=function(){pi=(pi+1)%PR.length;$("pr").textContent=PR[pi]};$("pr").textContent=PR[new Date().getDate()%PR.length];
+function editW(w){db.cur=w.id;$("wt").value=w.title;$("wy").value=w.type;$("wg").value=w.genre;$("wl").value=w.lang;$("ww").value=w.warn||"";$("wb").value=w.body;curImg=w.img||"";$("wia").value=w.alt||"";prev();$("wr").checked=false;stat();window.scrollTo(0,0)}
+function renderMine(){var m=$("mine");m.textContent="";var mine=db.works.filter(function(w){return db.me&&w.author===db.me});
+if(!mine.length)m.appendChild(el("div","empty",db.me?"आपकी रचनाएँ यहाँ दिखेंगी।":"पहले प्रोफ़ाइल टैब में अपना नाम लिखें।"));
+mine.slice().reverse().forEach(function(w){var c=el("div","card");c.appendChild(el("h3","",w.title||"(बिना शीर्षक)"));var r=el("div","row");r.appendChild(badge(w.status));r.appendChild(el("span","meta",words(w.body)+" शब्द"));c.appendChild(r);
+if(w.status==="rejected"&&w.reason)c.appendChild(el("div","meta","कारण: "+w.reason));
+var b=el("div","row");if(w.status==="draft"||w.status==="rejected")b.appendChild(btn("संपादित करें","o",function(){editW(w)}));
+if(w.status==="published")b.appendChild(btn("🔗 शेयर करें","t",function(){openWork(w.id,"write")}));if(w.status!=="published")b.appendChild(btn("हटाएँ","bad",function(){if(confirm("यह रचना हटाएँ?")){db.works=db.works.filter(function(x){return x.id!==w.id});if(db.cur===w.id)db.cur=null;save();renderMine()}}));
+c.appendChild(b);m.appendChild(c)})}
+var d0=curDraft();if(d0)editW(d0);stat();
+
+/* library + profile */
+function renderLib(){var m=$("v-lib");m.textContent="";m.appendChild(sh("⭐ सहेजी हुई"));var l=pub().filter(function(w){return db.marks[w.id]});
+if(!l.length)m.appendChild(el("div","empty","आपने अभी कोई रचना सहेजी नहीं है।"));l.forEach(function(w){m.appendChild(card(w))});
+m.appendChild(sh("🕘 हाल में पढ़ी"));var h=db.hist.map(byId).filter(function(w){return w&&w.status==="published"});if(!h.length)m.appendChild(el("div","empty","पढ़ने का इतिहास खाली है।"));h.forEach(function(w){m.appendChild(card(w))});
+m.appendChild(btn("इतिहास मिटाएँ","o",function(){db.hist=[];save();renderLib()}))}
+function streak(){var n=0,d=new Date();if(!db.days[dk(d)])d.setDate(d.getDate()-1);while(db.days[dk(d)]>0){n++;d.setDate(d.getDate()-1)}return n}
+function renderMe(){var m=$("v-me");m.textContent="";var c=el("div","card");c.appendChild(el("h2","","मेरी प्रोफ़ाइल"));
+var l=el("label","","लेखक का नाम");l.htmlFor="mn";var i=el("input");i.id="mn";i.maxLength=60;i.value=db.me;i.placeholder="जैसे: राधा शर्मा";c.appendChild(l);c.appendChild(i);
+c.appendChild(btn("नाम सहेजें","",function(){var v=i.value.trim();if(!v)return toast("नाम लिखें");db.me=v;save();toast("सहेजा गया");renderMe()}));m.appendChild(c);
+var td=db.days[dk()]||0,g=db.goal,st=el("div","stats");
+[["🔥 लगातार दिन",streak(),"#E8751A"],["✍️ आज के शब्द",td,"#0C8599"],["🎯 लक्ष्य",g,"#5F3DC4"],["👥 फ़ॉलो",Object.keys(db.follows).length,"#D6336C"]].forEach(function(x){var d=el("div","stat");d.style.background=x[2];d.appendChild(el("b","",x[1]));d.appendChild(el("span","",x[0]));st.appendChild(d)});m.appendChild(st);
+var gl=el("label","","दैनिक शब्द-लक्ष्य");gl.htmlFor="gl";var gi=el("input");gi.id="gl";gi.type="number";gi.min=50;gi.value=g;gi.onchange=function(){db.goal=Math.max(50,+gi.value||300);save();renderMe()};m.appendChild(gl);m.appendChild(gi);
+var bar=el("div");bar.style.cssText="height:12px;border-radius:99px;background:var(--ln);overflow:hidden";var f=el("div");f.style.cssText="height:100%;width:"+Math.min(100,td/g*100)+"%;background:linear-gradient(90deg,#0C8599,#E0B04B,#D6336C)";bar.appendChild(f);m.appendChild(bar);
+m.appendChild(sh("फ़ॉलो किए लेखक"));var fl=Object.keys(db.follows);if(!fl.length)m.appendChild(el("div","empty","किसी लेखक की रचना खोलकर उसे फ़ॉलो करें।"));fl.forEach(function(n){m.appendChild(el("div","card","✍️ "+n))})}
+
+/* admin */
+function renderAdmin(){var a=$("v-admin");a.textContent="";
+if(!adminOK()){var c=el("div","card");c.appendChild(el("h2","","🔐 संचालक प्रवेश"));c.appendChild(el("p","meta","केवल वेदपुराणसार संचालकों के लिए। पासवर्ड डालें।"));
+var i=el("input");i.type="password";i.inputMode="numeric";i.autocomplete="off";i.placeholder="पासवर्ड";i.setAttribute("aria-label","पासवर्ड");c.appendChild(i);
+var msg=el("div","meta");function ent(){if(Date.now()<db.lock){msg.textContent="अधिक प्रयास। "+Math.ceil((db.lock-Date.now())/60000)+" मिनट बाद कोशिश करें।";return}
+pbk(i.value).then(function(h){if(h===PIN){db.fails=0;db.adminUntil=Date.now()+30*60000;log("एडमिन प्रवेश");save();renderAdmin()}else{db.fails++;if(db.fails>=5){db.lock=Date.now()+15*60000;db.fails=0}save();msg.textContent="गलत पासवर्ड।"}})}
+i.onkeydown=function(e){if(e.key==="Enter")ent()};c.appendChild(btn("प्रवेश करें","",ent));c.appendChild(msg);a.appendChild(c);return}
+var W=db.works,P=W.filter(function(w){return w.status==="pending_review"}),U=pub(),rp=W.reduce(function(n,w){return n+(w.reports?w.reports.length:0)},0);
+var top=el("div","row");top.appendChild(el("h2","","🛡️ संचालक पैनल"));var sp=el("span");sp.style.flex="1";top.appendChild(sp);top.appendChild(btn("बाहर निकलें","o",function(){db.adminUntil=0;log("एडमिन बाहर");save();go("home")}));a.appendChild(top);
+var lk=0,rxn=0;for(var kk in db.likes)if(kk.indexOf("u:")!==0)lk+=db.likes[kk]||0;for(var w1 in db.rx)for(var e1 in db.rx[w1])rxn+=db.rx[w1][e1]||0;
+var s=el("div","stats");[["प्रतीक्षा में",P.length,"#E8751A","q"],["प्रकाशित",U.length,"#2B8A3E","l"],["ड्राफ़्ट",W.filter(function(w){return w.status==="draft"}).length,"#0C8599","d"],["रिपोर्ट",rp,"#C92A2A","r"],["टिप्पणियाँ",db.cm.length,"#5F3DC4","c"],["फ़ॉलो",db.fl.length,"#D6336C","f"],["पसंद",lk,"#B5179E","a"],["प्रतिक्रियाएँ",rxn,"#F08C00","a"]].forEach(function(x){var d=el("button","stat");d.style.background=x[2];d.setAttribute("aria-label",x[0]+" खोलें");d.appendChild(el("b","",x[1]));d.appendChild(el("span","",x[0]));d.onclick=function(){window.__tab=x[3];renderAdmin()};s.appendChild(d)});a.appendChild(s);
+var tb=el("div","tabs"),body=el("div"),tabs=[["q","स्वीकृति"],["l","प्रकाशित"],["d","ड्राफ़्ट"],["c","टिप्पणियाँ"],["f","फ़ॉलो"],["a","गतिविधि"],["r","रिपोर्ट"],["s","साइट"],["g","लॉग"]];
+function show(k){tb.textContent="";tabs.forEach(function(t){tb.appendChild(btn(t[1],t[0]===k?"":"o",function(){show(t[0])}))});body.textContent="";adminTab(k,body)}
+a.appendChild(tb);a.appendChild(body);show(window.__tab||"q")}
+function adminTab(k,b){var W=db.works;function re(){window.__tab=k;renderAdmin()}
+if(k==="q"){var P=W.filter(function(w){return w.status==="pending_review"});if(!P.length)b.appendChild(el("div","empty","कोई रचना प्रतीक्षा में नहीं है।"));
+P.forEach(function(w){var c=el("div","card");c.appendChild(el("h3","",w.title));c.appendChild(el("div","meta",w.author+" · "+w.type+" · "+w.lang+" · "+words(w.body)+" शब्द"));if(w.img){var im=el("img");im.src=w.img;im.alt=w.alt||"";im.style.cssText="width:100%;max-width:360px;aspect-ratio:16/9;object-fit:cover;border-radius:12px;display:block;margin:6px 0";c.appendChild(im)}
+var d=el("details");d.appendChild(el("summary","","रचना पढ़ें"));var bd=el("div","body");bd.appendChild(el("p","",w.body));d.appendChild(bd);c.appendChild(d);var r=el("div","row");
+r.appendChild(btn("✔ स्वीकृत","ok",function(){w.status="published";w.pubAt=Date.now();log("स्वीकृत: "+w.title);save();re();toast("प्रकाशित हो गई")}));
+r.appendChild(btn("✖ अस्वीकार","bad",function(){var rs=prompt("अस्वीकृति का कारण (लेखक को दिखेगा):");if(!rs||!rs.trim())return toast("कारण आवश्यक है");w.status="rejected";w.reason=rs.trim();log("अस्वीकृत: "+w.title+" — "+w.reason);save();re()}));c.appendChild(r);b.appendChild(c)})}
+if(k==="l"){var U=pub();if(!U.length)b.appendChild(el("div","empty","अभी कुछ प्रकाशित नहीं है।"));
+U.forEach(function(w){var c=el("div","card");c.appendChild(el("h3","",w.title));c.appendChild(el("div","meta",w.author+" · 👁 "+(db.views[w.id]||0)+" · ♥ "+(db.likes[w.id]||0)+" · 💬 "+db.cm.filter(function(x){return x.w===w.id}).length+" · ⭐ "+(db.marks[w.id]?1:0)+" · 🔗 "+((db.shares||{})[w.id]||0)));c.appendChild(el("div","meta",EM.map(function(e){return e+" "+((db.rx[w.id]||{})[e]||0)}).join("   ")));var r=el("div","row");r.appendChild(btn("खोलें","t",function(){openWork(w.id,"admin")}));
+r.appendChild(btn(w.featured?"⭐ पसंद हटाएँ":"⭐ संपादक की पसंद","o",function(){w.featured=!w.featured;log((w.featured?"चयनित: ":"चयन हटाया: ")+w.title);save();re()}));
+r.appendChild(btn("वापस लें","bad",function(){var rs=prompt("कारण:");if(!rs||!rs.trim())return;w.status="rejected";w.reason="प्रकाशन वापस लिया गया: "+rs.trim();w.featured=false;log("वापस लिया: "+w.title);save();re()}));c.appendChild(r);b.appendChild(c)})}
+if(k==="c"){if(!db.cm.length)b.appendChild(el("div","empty","कोई टिप्पणी नहीं।"));
+db.cm.slice().reverse().forEach(function(x){var c=el("div","card");var w=byId(x.w);c.appendChild(el("div","meta",x.by+" → "+(w?w.title:"हटाई गई रचना")+" · "+new Date(x.t).toLocaleString("hi-IN")+(x.hide?" · छिपी":"")));c.appendChild(el("div","",x.tx));var r=el("div","row");
+if(w)r.appendChild(btn("रचना खोलें","t",function(){openWork(w.id,"admin")}));r.appendChild(btn(x.hide?"दिखाएँ":"छिपाएँ","o",function(){x.hide=!x.hide;log("टिप्पणी "+(x.hide?"छिपाई":"दिखाई")+": "+x.by);save();re()}));
+r.appendChild(btn("लेखक पर रोक","bad",function(){if(db.banned.indexOf(x.by)<0)db.banned.push(x.by);log("रोक: "+x.by);save();toast(x.by+" पर रोक");re()}));c.appendChild(r);b.appendChild(c)})}
+if(k==="r"){var R=W.filter(function(w){return w.reports&&w.reports.length});if(!R.length)b.appendChild(el("div","empty","कोई रिपोर्ट नहीं।"));
+R.forEach(function(w){var c=el("div","card");c.appendChild(el("h3","",w.title));w.reports.forEach(function(x){c.appendChild(el("div","meta","🚩 "+x))});var r=el("div","row");
+r.appendChild(btn("रिपोर्ट निपटाई","ok",function(){w.reports=[];log("रिपोर्ट निपटी: "+w.title);save();re()}));r.appendChild(btn("रचना खोलें","o",function(){openWork(w.id)}));c.appendChild(r);b.appendChild(c)});
+if(db.banned.length){b.appendChild(sh("रोक वाले खाते"));db.banned.forEach(function(n){var c=el("div","card","🚫 "+n);c.appendChild(btn("रोक हटाएँ","o",function(){db.banned=db.banned.filter(function(y){return y!==n});log("रोक हटी: "+n);save();re()}));b.appendChild(c)})}}
+if(k==="d"){var D=W.filter(function(w){return w.status==="draft"});if(!D.length)b.appendChild(el("div","empty","कोई ड्राफ़्ट नहीं।"));D.forEach(function(w){var c=el("div","card");c.appendChild(el("h3","",w.title||"(बिना शीर्षक)"));c.appendChild(el("div","meta",w.author+" · "+words(w.body)+" शब्द"));c.appendChild(btn("खोलें","t",function(){openWork(w.id,"admin")}));b.appendChild(c)})}
+if(k==="f"){if(!db.fl.length)b.appendChild(el("div","empty","अभी किसी ने किसी लेखक को फ़ॉलो नहीं किया।"));var G={};db.fl.forEach(function(x){(G[x.to]=G[x.to]||[]).push(x)});
+Object.keys(G).forEach(function(n){var c=el("div","card");c.appendChild(el("h3","","✍️ "+n+" — "+G[n].length+" फ़ॉलोअर"));G[n].forEach(function(x){c.appendChild(el("div","meta","👤 "+x.by+" · "+new Date(x.t).toLocaleString("hi-IN")))});b.appendChild(c)})}
+if(k==="a"){var A=[];db.ev.forEach(function(x){A.push({t:x.t,w:x.w,m:"👤 "+x.by+({like:" ने पसंद किया",unlike:" ने पसंद हटाई",save:" ने सहेजा",rx:" ने "+x.e+" प्रतिक्रिया दी",share:" ने शेयर किया"}[x.k]||"")})});
+db.fl.forEach(function(x){A.push({t:x.t,m:"👥 "+x.by+" ने "+x.to+" को फ़ॉलो किया"})});db.cm.forEach(function(x){A.push({t:x.t,w:x.w,m:"💬 "+x.by+" ने टिप्पणी की: "+x.tx})});
+A.sort(function(p,q){return q.t-p.t});if(!A.length)b.appendChild(el("div","empty","अभी कोई गतिविधि नहीं।"));
+A.slice(0,100).forEach(function(x){var c=el("div","card"),w=x.w&&byId(x.w);c.appendChild(el("div","",x.m+(w?" — "+w.title:"")));c.appendChild(el("div","meta",new Date(x.t).toLocaleString("hi-IN")));if(w)c.appendChild(btn("रचना खोलें","o",function(){openWork(w.id,"admin")}));b.appendChild(c)})}
+if(k==="s"){var c=el("div","card");c.appendChild(el("b","","📣 घोषणा (होम पर दिखेगी)"));var a=el("input");a.value=db.ann;a.maxLength=160;c.appendChild(a);
+c.appendChild(el("b","","🏆 साप्ताहिक चुनौती"));var h=el("input");h.value=db.chal;h.maxLength=160;c.appendChild(h);
+c.appendChild(el("b","","🌐 वेबसाइट का लिंक (शेयर में यही जाएगा)"));var su=el("input");su.type="url";su.value=db.site||SITE;c.appendChild(su);
+c.appendChild(btn("सहेजें","",function(){var u=su.value.trim();if(u&&!/^https:\/\//.test(u))return toast("लिंक https:// से शुरू होना चाहिए");db.ann=a.value.trim();db.chal=h.value.trim();db.site=u;log("साइट सामग्री बदली");save();toast("सहेजा गया")}));b.appendChild(c);
+}
+if(k==="g"){var l=el("div","card");if(!db.audit.length)l.appendChild(el("span","meta","अभी कोई गतिविधि नहीं।"));db.audit.forEach(function(x){l.appendChild(el("div","meta",new Date(x.t).toLocaleString("hi-IN")+" — "+x.a))});b.appendChild(l)}}
+
+/* theme */
+var R=document.documentElement;try{var t=localStorage.getItem("vps-theme");if(t)R.setAttribute("data-theme",t)}catch(e){}
+$("th").onclick=function(){var d=R.getAttribute("data-theme")?R.getAttribute("data-theme")==="dark":matchMedia("(prefers-color-scheme:dark)").matches;var n=d?"light":"dark";R.setAttribute("data-theme",n);try{localStorage.setItem("vps-theme",n)}catch(e){}};
+var hh=(location.hash||"").slice(1);go("home");if(hh==="sanchalak")go("admin");else if(hh){var hw=byId(hh);if(hw&&hw.status==="published")openWork(hh);else toast("यह रचना इस डिवाइस पर उपलब्ध नहीं — होम देखें")}
+</script>
+</body>
+</html>
